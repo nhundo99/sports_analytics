@@ -24,3 +24,27 @@ team_abbrs = ['crd', 'atl', 'rav', 'buf',
               'sfo', 'tam', 'oti', 'was']
 
 
+# create a dataframe, later will be read into a csv
+nfl_df = pd.DataFrame()
+
+for season in seasons:
+    for team in team_abbrs:
+        url = 'https://www.pro-football-reference.com/teams/' + team + '/' + season + '/gamelog/'
+
+        # biuld a team-stats dataframe from the offensive and defensive stats and complete it
+        # with missing attributes
+        off_df = pd.read_html(url, header=1, attrs={'id':'gamelog' + season})[0]
+        def_df = pd.read_html(url, header=1, attrs={'id':'gamelog_opp' + season})[0]
+        team_df = pd.concat([off_df, def_df], axis=1)
+        team_df.insert(loc=0, column='Season', value=season)
+        team_df.insert(loc=2, column='Team', value=team.upper())
+
+        # add the team dataframe to the complete nfl dataframe
+        nfl_df = pd.concat([nfl_df, team_df], ignore_index=True)
+
+        # pause requests to follow the rules from sports-reference.com
+        time.sleep(random.randint(4,5))
+        print(nfl_df)
+
+# save the datafram to s csv file
+nfl_df.to_csv('nfl_gamelogs_2010_2023.csv', index=False)
