@@ -44,7 +44,6 @@ for season in seasons:
 
         # pause requests to follow the rules from sports-reference.com
         time.sleep(random.randint(4,5))
-        print(nfl_df)
-
+        
 # save the datafram to s csv file
 nfl_df.to_csv('nfl_gamelogs_2010_2023.csv', index=False)
