@@ -33,8 +33,3 @@ for team in team_abbrs:
     team_df.to_csv('teams/' + team + '/' + team + '_2010_2023_gamelogs.csv')
 
 
-"""
-# dataframe for crd
-crd_df = nfl_df[nfl_df['Team'] == 'CRD']
-print(crd_df)
-"""
