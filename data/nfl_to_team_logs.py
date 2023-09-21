@@ -30,7 +30,7 @@ for team in team_abbrs:
     team_df = nfl_df[nfl_df['Team'] == team.upper()]
 
     # save the team dataframe as a csv file in the given folder
-    team_df.to_csv('teams/' + team + '/' + team + '_2010_2023_gamelogs')
+    team_df.to_csv('teams/' + team + '/' + team + '_2010_2023_gamelogs.csv')
 
 
 """
