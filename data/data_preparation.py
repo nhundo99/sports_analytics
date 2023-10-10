@@ -1,8 +1,9 @@
 """
-in this file i want to get yearly stats for each team
+in this file i want to prepare the data for easier analysis
 
-import numpy as np
-import pandas as pd
+will do first for only the atl data and then just impement it into a for loop
+over all the teams
+
 
 team_abbrs = ['crd', 'atl', 'rav', 'buf',
               'car', 'chi', 'cin', 'cle',
